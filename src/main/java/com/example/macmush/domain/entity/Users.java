@@ -11,8 +11,8 @@ import java.time.LocalDateTime;
 
 @Entity
 @Getter
-@NoArgsConstructor(access = AccessLevel.PROTECTED) // JPA를 위한 기본 생성자
-@Table(name = "Users") // 실제 DB 테이블 이름 지정
+@NoArgsConstructor(access = AccessLevel.PROTECTED)
+@Table(name = "Users")
 public class Users {
 
     @Id
