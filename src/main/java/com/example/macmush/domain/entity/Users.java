@@ -2,6 +2,7 @@ package com.example.macmush.domain.entity;
 
 import jakarta.persistence.*;
 import lombok.AccessLevel;
+import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import org.hibernate.annotations.CreationTimestamp;
@@ -10,32 +11,40 @@ import org.hibernate.annotations.UpdateTimestamp;
 import java.time.LocalDateTime;
 
 @Entity
+@Table(name = "Users")
 @Getter
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
-@Table(name = "Users")
 public class Users {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY) // AUTO_INCREMENT
-    private Long id;
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long userId;
 
-    @Column(length = 50, unique = true, nullable = false)
+    @Column(name = "username", length = 50, nullable = false, unique = true)
     private String username;
 
-    @Column(length = 255, nullable = false)
+    @Column(name = "password", length = 255, nullable = false)
     private String password;
 
-    @Column(length = 50, unique = true, nullable = false)
+    @Column(name = "nickname", length = 50, nullable = false, unique = true)
     private String nickname;
 
-    @Column(length = 100, unique = true, nullable = false)
+    @Column(name = "email", length = 100, nullable = false, unique = true)
     private String email;
 
-    @CreationTimestamp // INSERT 시 자동으로 현재 시간 저장
+    @CreationTimestamp
     @Column(name = "created_at", updatable = false)
     private LocalDateTime createdAt;
 
-    @UpdateTimestamp // UPDATE 시 자동으로 현재 시간 저장
+    @UpdateTimestamp
     @Column(name = "updated_at")
     private LocalDateTime updatedAt;
+
+    @Builder
+    public Users(String username, String password, String nickname, String email) {
+        this.username = username;
+        this.password = password;
+        this.nickname = nickname;
+        this.email = email;
+    }
 }
