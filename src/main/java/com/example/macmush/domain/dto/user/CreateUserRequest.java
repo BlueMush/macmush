@@ -1,4 +1,4 @@
-package com.example.macmush.domain.dto.user.request;
+package com.example.macmush.domain.dto.user;
 
 import com.example.macmush.domain.entity.Users;
 import jakarta.validation.constraints.NotBlank;
@@ -15,9 +15,9 @@ public record CreateUserRequest(
     String email
 ) {
 
-  public Users toUserEntity(String userId) {
+  public Users toUserEntity(String username) {
     return Users.builder()
-        .username(userId)
+        .username(username)
         .password(password)
         .nickname(nickname)
         .email(email)
