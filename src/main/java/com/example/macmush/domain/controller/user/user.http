@@ -1,0 +1,21 @@
+# --- 변수 선언 (파일 최상단) ---
+@baseUrl = http://localhost:8080/api/users
+# @authToken = Bearer eyJhbGciOiJIuzI1NiJ9... (로그인 후 받은 토큰 복사)
+
+###
+
+# (주석) 1. 변수를 사용한 GET 요청
+GET {{baseUrl}}/posts/1
+
+###
+
+### (주석) UserController의 createUser 메서드 호출
+POST {{baseUrl}}/api/users/new-user-id-123
+Content-Type: application/json
+
+{
+  "username": "testuser",
+  "password": "password123!",
+  "nickname": "테스트유저",
+  "email": "test@example.com"
+}
