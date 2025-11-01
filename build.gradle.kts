@@ -31,6 +31,9 @@ dependencies {
     testRuntimeOnly("org.junit.platform:junit-platform-launcher")
     runtimeOnly("com.mysql:mysql-connector-j")
 
+    testImplementation("com.navercorp.fixturemonkey:fixture-monkey-starter:1.0.17")
+    testImplementation("com.navercorp.fixturemonkey:fixture-monkey-jackson:1.0.17")
+    testImplementation("com.navercorp.fixturemonkey:fixture-monkey-javax-validation:1.0.17")
     annotationProcessor("org.projectlombok:lombok")
 }
 
