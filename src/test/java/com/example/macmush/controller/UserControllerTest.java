@@ -4,7 +4,6 @@ import static org.mockito.Mockito.when;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
-import com.example.macmush.domain.controller.user.UserController;
 import com.example.macmush.domain.dto.user.FindUserResponse;
 import com.example.macmush.domain.service.UserService;
 import com.navercorp.fixturemonkey.FixtureMonkey;
@@ -16,7 +15,7 @@ import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
 import org.springframework.test.context.bean.override.mockito.MockitoBean;
 import org.springframework.test.web.servlet.MockMvc;
 
-@WebMvcTest(UserController.class)
+@WebMvcTest
 class UserControllerTest {
 
   private final FixtureMonkey fixtureMonkey = FixtureMonkey.builder()
@@ -45,9 +44,7 @@ class UserControllerTest {
   @Test
   @DisplayName("유저 조회 실패")
   void userControllerNoSuchCase() throws Exception {
-//    when(userService.findUser(ArgumentMatchers.anyString()))
-//        .thenThrow(new RuntimeException());
-    when(userService).thenThrow(Exception.class);
+    when(userService.findUser("df")).thenThrow(new RuntimeException());
     mockMvc.perform(get("/api/users/{userName}", "df"))
         .andExpect(status().isInternalServerError());
   }
